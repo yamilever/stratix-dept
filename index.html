@@ -79,11 +79,9 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdro
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:18px;row-gap:48px}
 .card{min-width:0;cursor:pointer}
 .card-photo{position:relative;aspect-ratio:4/5;background:#f2f2f0;overflow:hidden}
-.card-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:5%;opacity:0;transition:opacity .35s ease,transform .55s cubic-bezier(.16,1,.3,1)}
-.card-photo img.visible{opacity:1}.card:hover .card-photo img.visible{transform:scale(1.025)}
+.card-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;padding:0;opacity:0;transition:opacity .35s ease,transform .55s cubic-bezier(.16,1,.3,1)}
+.card-photo img.visible{opacity:1}.card:hover .card-photo img.visible{transform:scale(1.015)}
 .card-badge{position:absolute;top:11px;left:11px;z-index:5;background:#fff;padding:6px 8px;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
-.quick-view{position:absolute;z-index:8;left:50%;bottom:14px;transform:translate(-50%,10px);opacity:0;background:rgba(255,255,255,.95);border:1px solid #ddd;border-radius:999px;padding:10px 15px;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;transition:opacity .25s,transform .25s}
-.card:hover .quick-view{opacity:1;transform:translate(-50%,0)}
 .slide-arrow{position:absolute;top:50%;z-index:7;width:34px;height:34px;margin-top:-17px;border:0;background:transparent;border-radius:0;display:grid;place-items:center;opacity:0;transition:opacity .2s,transform .2s}
 .slide-arrow svg{width:14px;height:14px}.slide-arrow.prev{left:10px}.slide-arrow.next{right:10px}.card:hover .slide-arrow{opacity:1}.slide-arrow:hover{transform:scale(1.12)}
 .card-body{padding:13px 1px 0}.card-name{font-size:11px;font-weight:500;letter-spacing:.02em;margin-bottom:5px}.price{font-size:11px;color:#666}.card-meta{font-size:9px;color:#999;margin-top:3px}
@@ -119,7 +117,7 @@ footer{border-top:1px solid var(--line);padding:65px 0 25px}.footer-grid{display
   .product-modal{padding:10px;align-items:flex-start}.modal-panel{width:100%;max-height:calc(100vh - 20px);grid-template-columns:1fr;overflow-y:auto}.modal-gallery{padding:10px}.modal-main{height:52vh;min-height:300px;flex:none}.modal-main img{max-height:none}.modal-info{padding:28px 22px 30px;justify-content:flex-start}.modal-info h2{font-size:28px}.modal-close{right:8px;top:8px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:30px}.footer-grid>div:first-child{grid-column:1/-1}
 }
-@media(max-width:520px){.container{padding:0 15px}.topbar{height:58px}.catalog-head{top:58px}.brand img{height:30px}.brand-name{font-size:11px}.hero-art{max-height:58vh}.hero-cta{padding:30px 0 35px}.btn{width:100%}.actions{padding:0 15px}.catalog-count{font-size:8px}.card-name{font-size:10px}.price{font-size:10px}.quick-view{display:none}.slide-arrow{opacity:1;width:30px;height:30px;margin-top:-15px}.slide-arrow.prev{left:7px}.slide-arrow.next{right:7px}.modal-main{height:48vh;min-height:260px}.modal-thumbs{grid-template-columns:68px 68px}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}}
+@media(max-width:520px){.container{padding:0 15px}.topbar{height:58px}.catalog-head{top:58px}.brand img{height:30px}.brand-name{font-size:11px}.hero-art{max-height:58vh}.hero-cta{padding:30px 0 35px}.btn{width:100%}.actions{padding:0 15px}.catalog-count{font-size:8px}.card-name{font-size:10px}.price{font-size:10px}.slide-arrow{opacity:1;width:30px;height:30px;margin-top:-15px}.slide-arrow.prev{left:7px}.slide-arrow.next{right:7px}.modal-main{height:48vh;min-height:260px}.modal-thumbs{grid-template-columns:68px 68px}.footer-grid{grid-template-columns:1fr}.footer-grid>div:first-child{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 </style>
 </head>
@@ -238,7 +236,7 @@ function renderCatalog(){
 }
 function renderCard(p){
   const card=document.createElement("article");card.className="card";card.tabIndex=0;
-  card.innerHTML=`<div class="card-photo"><span class="card-badge">${p.cat==="iconos"?"Íconos":"Streetwear"}</span><img class="visible" data-side="front" src="images/${p.id}-front.png" alt="${p.name} - vista 1" loading="lazy"><img data-side="back" src="images/${p.id}-back.png" alt="${p.name} - vista 2" loading="lazy"><button class="slide-arrow prev" type="button" aria-label="Vista anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg></button><button class="slide-arrow next" type="button" aria-label="Vista siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg></button><span class="quick-view">Ver detalles</span></div><div class="card-body"><div class="card-name">${p.name}</div><div class="price">${fmt(p.price)}</div><div class="card-meta">Oversize · Heavyweight</div></div>`;
+  card.innerHTML=`<div class="card-photo"><span class="card-badge">${p.cat==="iconos"?"Íconos":"Streetwear"}</span><img class="visible" data-side="front" src="images/${p.id}-front.png" alt="${p.name} - vista 1" loading="lazy"><img data-side="back" src="images/${p.id}-back.png" alt="${p.name} - vista 2" loading="lazy"><button class="slide-arrow prev" type="button" aria-label="Vista anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg></button><button class="slide-arrow next" type="button" aria-label="Vista siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18l6-6-6-6"/></svg></button></div><div class="card-body"><div class="card-name">${p.name}</div><div class="price">${fmt(p.price)}</div><div class="card-meta">Oversize · Heavyweight</div></div>`;
   const imgs=[...card.querySelectorAll(".card-photo img")];let side=0;
   const setSide=i=>{side=i;imgs.forEach((img,n)=>img.classList.toggle("visible",n===i))};
   card.querySelector(".prev").addEventListener("click",e=>{e.stopPropagation();setSide((side+1)%2)});
