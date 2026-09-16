@@ -85,7 +85,7 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdro
   clip-path: inset(0);
   width: 100%;
   aspect-ratio: 3 / 4;
-  background: #f2f2f0;
+  background: #f3f2ee; /* Color de fondo ajustado para que combine con tus imágenes */
 }
 
 .product-media-zoom {
@@ -100,7 +100,7 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdro
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* Muestra la imagen completa sin recortar las mangas */
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -110,7 +110,7 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdro
 }
 
 .product-media:hover .product-media-zoom {
-  transform: scale(1.1);
+  transform: scale(1.05); /* Zoom suave que no corta la camiseta */
 }
 
 .card-badge{position:absolute;top:11px;left:11px;z-index:5;background:#fff;padding:6px 8px;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
@@ -125,10 +125,10 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdro
 .modal-panel{position:relative;width:min(1100px,100%);background:#fff;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(340px,.75fr);max-height:calc(100vh - 44px);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.22);transform:translateY(16px);transition:transform .3s ease}
 .product-modal.open .modal-panel{transform:translateY(0)}
 .modal-gallery{padding:20px;background:#f5f5f3;min-width:0;display:flex;flex-direction:column}
-.modal-main{position:relative;min-height:0;flex:1;background:#ededeb;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in}
-.modal-main img{width:100%;height:100%;max-height:calc(100vh - 160px);object-fit:cover;transition:transform .35s ease}.modal-main:hover img{transform:scale(1.025)}
+.modal-main{position:relative;min-height:0;flex:1;background:#f3f2ee;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:zoom-in}
+.modal-main img{width:100%;height:100%;max-height:calc(100vh - 160px);object-fit:contain;transition:transform .35s ease}.modal-main:hover img{transform:scale(1.025)}
 .modal-thumbs{display:grid;grid-template-columns:82px 82px;gap:8px;margin-top:10px}
-.modal-thumb{border:1px solid #ddd;background:#fff;padding:0;opacity:.55;overflow:hidden}.modal-thumb.active{opacity:1;border-color:#111}.modal-thumb img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.modal-thumb{border:1px solid #ddd;background:#fff;padding:0;opacity:.55;overflow:hidden}.modal-thumb.active{opacity:1;border-color:#111}.modal-thumb img{width:100%;aspect-ratio:1/1;object-fit:contain}
 .modal-info{padding:52px 44px;overflow-y:auto;display:flex;flex-direction:column;justify-content:center}
 .modal-kicker{font-size:9px;color:#888;letter-spacing:.13em;text-transform:uppercase;margin-bottom:16px}.modal-info h2{font-size:34px;font-weight:500;letter-spacing:-.045em;line-height:1.02;margin-bottom:15px}.modal-price{font-size:15px;color:#555;margin-bottom:24px}.modal-desc{font-size:12px;color:#666;line-height:1.8;margin-bottom:25px}
 .modal-specs{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:13px 0;margin-bottom:25px}.modal-specs div{display:flex;justify-content:space-between;padding:6px 0;font-size:10px}.modal-specs span{color:#888}.modal-specs strong{font-weight:500}
