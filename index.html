@@ -70,7 +70,7 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdro
 .toolbar{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .search-box{display:flex;align-items:center;gap:9px;width:260px;border-bottom:1px solid var(--line-dark);height:38px}
 .search-box:focus-within{border-color:#111}.search-box svg{width:15px;height:15px;color:#777}.search-box input{width:100%;border:0;outline:0;background:transparent;font-size:11px;color:#111}.search-box input::placeholder{color:#999}
-.tabs{display:flex;align-items:center;gap:27px}.tab{border:0;background:none;color:#888;padding:26px 0 23px;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative}.tab:after{content:"absolute;left:0;right:100%;bottom:17px;height:1px;background:#111;transition:right .25s}.tab.active{color:#111}.tab.active:after{right:0}
+.tabs{display:flex;align-items:center;gap:27px}.tab{border:0;background:none;color:#888;padding:26px 0 23px;font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;position:relative}.tab:after{content:"";position:absolute;left:0;right:100%;bottom:17px;height:1px;background:#111;transition:right .25s}.tab.active{color:#111}.tab.active:after{right:0}
 
 /* product grid */
 .catalog{padding:52px 0 90px}
@@ -79,14 +79,12 @@ header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.96);backdro
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:18px;row-gap:48px}
 .card{min-width:0;cursor:pointer}
 .card-photo{position:relative;aspect-ratio:4/5;background:#f2f2f0;overflow:hidden}
-.card-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;padding:12%;opacity:0;transition:opacity .35s ease,transform .35s ease}
-.card-photo img.visible{opacity:1}
-.card:hover .card-photo img.visible{transform:scale(1.04)}
+.card-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;padding:10%;opacity:0;transition:opacity .35s ease,transform .55s cubic-bezier(.16,1,.3,1)}
+.card-photo img.visible{opacity:1}.card:hover .card-photo img.visible{transform:scale(1.04)}
 .card-badge{position:absolute;top:11px;left:11px;z-index:5;background:#fff;padding:6px 8px;font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .slide-arrow{position:absolute;top:50%;z-index:7;width:34px;height:34px;margin-top:-17px;border:0;background:transparent;border-radius:0;display:grid;place-items:center;opacity:0;transition:opacity .2s,transform .2s;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.5))}
 .slide-arrow svg{width:14px;height:14px}.slide-arrow.prev{left:10px}.slide-arrow.next{right:10px}.card:hover .slide-arrow{opacity:1}.slide-arrow:hover{transform:scale(1.12)}
 .card-body{padding:13px 1px 0}.card-name{font-size:11px;font-weight:500;letter-spacing:.02em;margin-bottom:5px}.price{font-size:11px;color:#666}.card-meta{font-size:9px;color:#999;margin-top:3px}
-.catalog-note{text-align:center;margin-top:50px;color:#999;font-size:9px;letter-spacing:.07em;text-transform:uppercase}
 .empty-state{grid-column:1/-1;padding:80px 20px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:#777}.empty-state strong{display:block;color:#111;font-size:11px;margin-bottom:5px}
 
 /* product modal */
@@ -179,7 +177,6 @@ footer{border-top:1px solid var(--line);padding:65px 0 25px}.footer-grid{display
     <div class="container">
       <div class="catalog-intro"><div><span class="catalog-eyebrow">Stratix Dept / Collection</span><h1 class="catalog-title">Camisetas</h1></div><span class="catalog-count" id="catalogCount"></span></div>
       <div class="grid" id="catalogGrid"></div>
-      <p class="catalog-note">Selecciona una camiseta para ver el producto completo.</p>
     </div>
   </section>
 </main>
